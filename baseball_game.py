@@ -286,6 +286,8 @@ def main():
 
     while True:
         user_input = input("Input guess number : ")
+        if user_input == "0":
+            break
 
         if is_validated_number(user_input):
             strikes, ball = get_strikes_or_ball(user_input, random_number)
@@ -295,16 +297,16 @@ def main():
                 while True:
                     yes_or_no = input("You win, one more(Y/N)?")
                     
-                    if is_yes(yes_or_no) or is_no(yes_or_no):
+                    if is_yes(yes_or_no) or is_no(yes_or_no) or yes_or_no == "0":
                         break
                     else:
                         print("Wrong Input, Input again")
 
-                if is_no(yes_or_no):
-                    break
-                else:
+                if is_yes(yes_or_no):
                     random_number = str(get_not_duplicated_three_digit_number())
                     print("Random Number is : ", random_number)
+                else:
+                    break
         else:
             print("Wrong Input, Input again")
     # ==================================
